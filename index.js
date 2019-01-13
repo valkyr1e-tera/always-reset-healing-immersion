@@ -6,6 +6,9 @@ module.exports = function AlwaysResetHealingImmersion(mod) {
   })
 
   mod.hook('S_ACTION_STAGE', 9, { order: Number.NEGATIVE_INFINITY }, event => {
+    if (mod.game.me.class !== 'priest')
+      return
+
     if (event.skill.id === 370200) {
       if (reset) {
         reset = false
